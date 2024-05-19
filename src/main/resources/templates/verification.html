@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>주차장 화재 SMS 시스템</title>
+  </head>
+  <script>
+
+    var check = [[${message}]];
+    if(check > 0) {
+        alert("인증을 실패하였습니다. 다시 진행해 주세요!");
+    }
+    
+
+    function check_form() {
+        if(document.getElementById("num").value==''){
+            alert("입력된 정보가 없습니다.");
+            return false;
+        }
+
+        document.getElementById("frm").submit()
+    }
+  </script>
+  <body>
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="images/free-icon-chat-1041916.png" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3><strong>SMS 문자 인증</strong></h3>
+              <p class="mb-4">고객님에 전화번호로 전송된 인증번호를 입력해주세요. 번호를 입력시 숫자 이외에 문자는 입력하지마십시오.</p>
+            </div>
+            <form action="verificationAction" method="post" id="frm">
+                <input type="hidden" id="phone" name="PNforV" th:value="*{data}">
+                <div class="form-group first">
+                <label for="username">verification number</label>
+                <input type="text" name="VN" class="form-control" id="num">
+
+              </div>
+
+              <input type="button" value="Verification" class="btn text-white btn-block btn-primary" onclick="check_form()">
+
+              </div>
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
